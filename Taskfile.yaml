@@ -1,0 +1,28 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - go build -v ./... 
+  
+  test:
+    cmds:
+      - go test -v ./...
+
+  lint:
+    cmds:
+      - golangci-lint run
+
+  run:
+    cmds:
+      - docker-compose up --build
+
+  clean:
+    cmds:
+      - docker-compose down
+      - docker image prune -a -f
+      - docker volume prune -f
+
+  tidy:
+    cmds:
+      - go mod tidy

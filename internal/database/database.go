@@ -2,7 +2,6 @@ package database
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"os"
 
@@ -11,7 +10,7 @@ import (
 )
 
 type Database struct {
-	Client *sql.DB
+	Client *sqlx.DB
 }
 
 func NewDatabase() (*Database, error) {
@@ -34,7 +33,7 @@ func NewDatabase() (*Database, error) {
 	}
 
 	return &Database{
-		Client: dbConn.DB,
+		Client: dbConn,
 	}, nil
 }
 
